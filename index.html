@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <meta name="author" content="Gustavo Cruz">
+    <meta name="description" content="Um jogo da memória simples construído com JavaScript, HTML e CSS.">
+    <meta name="keywords" content="jogo da memória, javascript, html, css">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="favicon.ico" type="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container-estatisticas">
+            <div id="contagem-movimentos">Movimentos: 0</div>
+            <div id="tempo">Tempo: 00:00</div>
+        </div>
+        <div class="container-jogo"></div>
+        <div class="container-botoes">
+            <button id="stop" class="esconder botao-vermelho">Parar Jogo</button>
+        </div>
+    </div>
+    <div class="container-controles mostrar">
+        <p id="resultado"></p>
+        <button id="start" class="botao-verde">Iniciar Jogo</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
