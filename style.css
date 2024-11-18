@@ -31,6 +31,7 @@ body {
     overflow: hidden;
     background: linear-gradient(135deg, var(--cor-fundo) 0%, var(--cor-fundo-secundaria) 100%);
     background-size: cover;
+    background-image: url("./assets/img/01_MSFT_DM_Landscape_Desktop_DM_4K.png");
     background-repeat: no-repeat;
     background-position: center;
     object-fit: cover;
@@ -170,10 +171,11 @@ body {
 }
 
 .container-botoes {
+    position: relative;
     display: flex;
-    gap: 1em;
     justify-content: center;
     margin-top: 1em;
+    width: 100%;
 }
 
 button {
@@ -231,6 +233,32 @@ button:hover {
     background: #3dff94 !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(78, 255, 159, 0.3);
+}
+
+.github-btn {
+    position: absolute;
+    right: 0;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    color: var(--cor-texto);
+}
+
+.github-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(calc(-50% - 2px));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.github-btn svg {
+    width: 24px;
+    height: 24px;
 }
 
 .esconder {
