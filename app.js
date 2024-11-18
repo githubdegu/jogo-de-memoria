@@ -130,6 +130,7 @@ function pararJogo() {
   controles.classList.add("mostrar");
   botaoParar.classList.add("esconder");
   botaoIniciar.classList.remove("esconder");
+  document.querySelector('.wrapper').classList.add('esconder');
 }
 
 function iniciarJogo() {
@@ -151,6 +152,7 @@ function iniciarJogo() {
   movimentos.innerHTML = `<span>Movimentos:</span> ${contagemMovimentos}`;
   valorTempo.innerHTML = `<span>Tempo:</span> 00:00`;
   
+  document.querySelector('.wrapper').classList.remove('esconder');
   inicializador();
 }
 
