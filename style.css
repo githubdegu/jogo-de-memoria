@@ -311,6 +311,7 @@ button:hover {
     color: var(--cor-texto);
     width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 
 .mute-btn:hover {
@@ -321,6 +322,10 @@ button:hover {
 
 .mute-btn svg {
     color: var(--cor-texto);
+}
+
+.mute-btn.muted {
+    opacity: 0.7;
 }
 
 .mute-btn.muted svg path:last-child {
