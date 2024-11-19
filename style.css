@@ -161,14 +161,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    max-width: 450px;
-    padding: 2em;
+    width: auto;
+    padding: 0;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
     z-index: 1000;
 }
 
@@ -211,6 +210,7 @@ button:hover {
 }
 
 #stop {
+    position: relative;
     color: #000000;
     margin-top: 1em;
 }
@@ -227,14 +227,17 @@ button:hover {
 }
 
 .botao-verde {
-    background: #4eff9f !important;
+    background: linear-gradient(145deg, #4eff9f, #3dff94) !important;
     color: #333 !important;
+    padding: 1em 2.5em;
+    font-size: 1.2em;
+    box-shadow: 0 8px 25px rgba(78, 255, 159, 0.3);
 }
 
 .botao-verde:hover {
-    background: #3dff94 !important;
+    background: linear-gradient(145deg, #3dff94, #2dff84) !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(78, 255, 159, 0.3);
+    box-shadow: 0 12px 30px rgba(78, 255, 159, 0.4);
 }
 
 .github-btn {
@@ -250,6 +253,8 @@ button:hover {
     background: rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     color: var(--cor-texto);
+    width: 40px;
+    height: 40px;
 }
 
 .github-btn:hover {
@@ -289,4 +294,35 @@ button:hover {
     color: var(--cor-resultado-texto);
     font-size: 1.6em;
     margin: 0.4em 0;
+}
+
+.mute-btn {
+    position: absolute;
+    left: 0;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    color: var(--cor-texto);
+    width: 40px;
+    height: 40px;
+}
+
+.mute-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(calc(-50% - 2px));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mute-btn svg {
+    color: var(--cor-texto);
+}
+
+.mute-btn.muted svg path:last-child {
+    display: none;
 }
