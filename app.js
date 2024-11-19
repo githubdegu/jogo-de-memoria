@@ -10,6 +10,14 @@ let intervalo;
 let primeiraCarta = false;
 let segundaCarta = false;
 
+// Sons do jogo
+const flipSound = new Audio('./assets/sounds/flipcard-91468.mp3');
+const matchSound = new Audio('./assets/sounds/carddrop2-92718.mp3');
+const victorySound = new Audio('./assets/sounds/goodresult-82807.mp3');
+
+// Controle de mudo
+let isMuted = false;
+
 const itens = [
   { nome: "formiga", imagem: "./assets/img/Ant.svg" },
   { nome: "cachorro", imagem: "./assets/img/Corgi.svg" },
@@ -78,6 +86,7 @@ const geradorMatriz = (valoresCartas, tamanho = 4) => {
   cartas = document.querySelectorAll(".container-carta");
   cartas.forEach((carta) => {
     carta.addEventListener("click", () => {
+      if (!isMuted) flipSound.play();
       if (!carta.classList.contains("matched") && !carta.classList.contains("virada")) {
         carta.classList.add("virada");
         carta.querySelector('.carta-antes').style.border = 'none';
@@ -92,6 +101,7 @@ const geradorMatriz = (valoresCartas, tamanho = 4) => {
           let valorSegundaCarta = carta.getAttribute("data-card-value");
           
           if (valorPrimeiraCarta === valorSegundaCarta) {
+            if (!isMuted) matchSound.play();
             primeiraCarta.classList.add("matched");
             segundaCarta.classList.add("matched");
             primeiraCarta = false;
@@ -99,6 +109,7 @@ const geradorMatriz = (valoresCartas, tamanho = 4) => {
             
             if (contagemVitorias === Math.floor(valoresCartas.length / 2)) {
               setTimeout(() => {
+                if (!isMuted) victorySound.play();
                 resultado.innerHTML = `
                   <h2>Você Venceu!</h2>
                   <h4>Movimentos: ${contagemMovimentos}</h4>
@@ -153,6 +164,11 @@ function iniciarJogo() {
   valorTempo.innerHTML = `<span>Tempo:</span> 00:00`;
   
   document.querySelector('.wrapper').classList.remove('esconder');
+
+  // Resetar estado do áudio
+  isMuted = false;
+  document.getElementById('mute-button').classList.remove('muted');
+  
   inicializador();
 }
 
