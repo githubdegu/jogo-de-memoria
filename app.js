@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const itens = [
     { nome: "formiga", imagem: "./assets/img/Ant.svg" },
     { nome: "cachorro", imagem: "./assets/img/Corgi.svg" },
-    { nome: "carangueiro", imagem: "./assets/img/Crab.svg" },
+    { nome: "caranguejo", imagem: "./assets/img/Crab.svg" },
     { nome: "raposa", imagem: "./assets/img/Crafty Fox.svg" },
     { nome: "girafa", imagem: "./assets/img/Giraffe Full Body.svg" },
     { nome: "favos-de-mel", imagem: "./assets/img/Honeycombs.svg" },
@@ -97,16 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
     valoresCartas = [...valoresCartas, ...valoresCartas];
     valoresCartas.sort(() => Math.random() - 0.5);
 
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < tamanho * tamanho; i++) {
-      containerJogo.innerHTML += `
-         <div class="container-carta" data-card-value="${valoresCartas[i].nome}">
-            <div class="carta-antes">?</div>
-            <div class="carta-depois">
-            <img src="${valoresCartas[i].imagem}" class="image"/></div>
-         </div>
-         `;
+      const carta = document.createElement('div');
+      carta.classList.add('container-carta');
+      carta.setAttribute('data-card-value', valoresCartas[i].nome);
+      carta.innerHTML = `
+        <div class="carta-antes">?</div>
+        <div class="carta-depois">
+          <img src="${valoresCartas[i].imagem}" class="image"/>
+        </div>
+      `;
+      fragment.appendChild(carta);
     }
-
+    containerJogo.appendChild(fragment);
     containerJogo.style.gridTemplateColumns = `repeat(${tamanho},auto)`;
 
     cartas = document.querySelectorAll(".container-carta");
