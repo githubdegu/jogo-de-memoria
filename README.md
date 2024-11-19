@@ -14,6 +14,7 @@ Este projeto é uma implementação interativa do clássico jogo da memória. Os
 - Design moderno com gradientes e efeitos de vidro
 - 12 pares de cartas com ícones de animais
 - Botões para iniciar e parar o jogo
+- **Novo:** Tutorial interativo para novos jogadores
 
 ## Tecnologias Utilizadas
 
@@ -38,7 +39,6 @@ O jogo pode ser facilmente personalizado alterando as variáveis CSS no arquivo 
 - Adicionar níveis de dificuldade
 - Implementar um sistema de pontuação
 - Criar um modo multijogador
-- Adicionar efeitos sonoros e música de fundo
 
 ## Autor
 
