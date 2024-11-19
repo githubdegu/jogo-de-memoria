@@ -165,9 +165,6 @@ body {
     padding: 0;
     border-radius: 20px;
     background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
     z-index: 1000;
 }
 
@@ -330,4 +327,126 @@ button:hover {
 
 .mute-btn.muted svg path:last-child {
     display: none;
+}
+
+.tutorial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.tutorial.esconder {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tutorial-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2em;
+    max-width: 400px;
+    text-align: center;
+}
+
+.tutorial-content h2 {
+    color: #4eff9f;
+    margin-bottom: 1.5em;
+    font-size: 1.8em;
+}
+
+.tutorial-content button {
+    background: linear-gradient(145deg, #4eff9f, #3dff94) !important;
+    color: #333 !important;
+    padding: 1em 2.5em;
+    font-size: 1.1em;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(78, 255, 159, 0.3);
+    margin-top: 1em;
+}
+
+.tutorial-content button:hover {
+    background: linear-gradient(145deg, #3dff94, #2dff84) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(78, 255, 159, 0.4);
+}
+
+.tutorial-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    margin-bottom: 2em;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.step p {
+    color: var(--cor-texto);
+    font-size: 1.1em;
+}
+
+.demo-card {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, var(--cor-carta-antes), var(--cor-botao-hover));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.demo-cards {
+    display: flex;
+    gap: 1em;
+}
+
+.demo-cards img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    background: var(--cor-carta-antes);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+@keyframes pulse {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        transform: scale(1.1);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
 }
