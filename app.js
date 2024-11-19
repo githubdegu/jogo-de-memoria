@@ -5,6 +5,7 @@ const botaoParar = document.getElementById("stop");
 const containerJogo = document.querySelector(".container-jogo");
 const resultado = document.getElementById("resultado");
 const controles = document.querySelector(".container-controles");
+const muteButton = document.getElementById('mute-button');
 let cartas;
 let intervalo;
 let primeiraCarta = false;
@@ -167,7 +168,11 @@ function iniciarJogo() {
 
   // Resetar estado do áudio
   isMuted = false;
-  document.getElementById('mute-button').classList.remove('muted');
+  flipSound.muted = false;
+  matchSound.muted = false;
+  victorySound.muted = false;
+  updateMuteButtonIcon();
+  muteButton.classList.remove('muted');
   
   inicializador();
 }
@@ -179,6 +184,46 @@ const inicializador = () => {
   let valoresCartas = gerarAleatorio();
   geradorMatriz(valoresCartas);
 };
+
+// Função para atualizar o ícone do botão
+function updateMuteButtonIcon() {
+    const muteIcon = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    `;
+    
+    const unmuteIcon = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19.07 4.93C20.9447 6.80528 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    `;
+    
+    muteButton.innerHTML = isMuted ? muteIcon : unmuteIcon;
+}
+
+// Função para alternar o estado do som
+function toggleMute() {
+    isMuted = !isMuted;
+    
+    // Atualiza o estado de todos os sons
+    flipSound.muted = isMuted;
+    matchSound.muted = isMuted;
+    victorySound.muted = isMuted;
+    
+    // Atualiza o ícone
+    updateMuteButtonIcon();
+    
+    // Adiciona ou remove a classe muted
+    muteButton.classList.toggle('muted', isMuted);
+}
+
+// Adiciona o evento de clique ao botão
+muteButton.addEventListener('click', toggleMute);
+
+// Atualiza o ícone inicial
+updateMuteButtonIcon();
 
 botaoIniciar.addEventListener("click", iniciarJogo);
 botaoParar.addEventListener("click", pararJogo);
